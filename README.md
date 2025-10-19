@@ -1,22 +1,21 @@
 # Farm Produce & Livestock Tracker
 
-A full-stack project with:
-- Frontend: HTML, CSS, JavaScript (modern, inspired by CropTracker-style UI)
-- Backend: Node.js + Express (REST API)
-- Database: MySQL (schema provided)
+Full-Stack Project Overview
+This is a complete full-stack web project built with the following technologies:
+Frontend: HTML, CSS, and JavaScript — designed with a modern look inspired by CropTracker’s user interface.
+Backend: Node.js with Express — provides a RESTful API to handle data operations.
+Database: MySQL — includes a ready-made schema for quick setup.
 
 ## How to run
+Install the required software:
+Node.js
+MySQL( mysql -u root -p < database/database.sql)
+Update your database connection:
+Open server.js and edit the MySQL credentials (username, password, and database name) to match your setup.
 
-1. Install Node.js and MySQL.
-2. Create the database:
-   - `mysql -u root -p < database/database.sql`
-3. Update backend MySQL connection credentials in `server.js`.
-4. Install dependencies and run:
-   ```bash
-   cd backend
-   npm install
-   node server.js
-   ```
+Open the frontend:
+You can either open the HTML files directly in your browser or serve them using a local static server.
+
 5. Open the `frontend` HTML files directly in a browser (or serve them with a static server).
 
 Files included:
