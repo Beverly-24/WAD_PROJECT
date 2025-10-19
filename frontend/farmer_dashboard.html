@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Farmer Dashboard: Green Harvest</h1>
+        <button onclick="logout()" style="float: right;" id="logoutBtn">Logout</button>
+
+        <div id="farmer-dashboard" class="dashboard-section">
+            <div class="tabs">
+                <div class="tab-button active" onclick="showFarmerTab('farmer-add')">Add Produce</div>
+                <div class="tab-button" onclick="showFarmerTab('farmer-inventory')">My Inventory</div>
+                <div class="tab-button" onclick="showFarmerTab('farmer-quotes')">Quotes (<span id="quoteCount">0</span>)
+                </div>
+                <div class="tab-button" onclick="showFarmerTab('farmer-reports')">Reports</div>
+            </div>
+
+            <div id="farmer-add" class="farmer-tab-content">
+                <h3>Add New Product & Harvest Data</h3>
+                <form id="productForm">
+                    <label for="productType">Product Type:</label>
+                    <select id="productType" required>
+                        <option value="Crop">Crop (e.g., Maize, Mahangu)</option>
+                        <option value="Livestock">Livestock (e.g., Cattle, Goats)</option>
+                    </select>
+
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" value="Maize" required>
+
+                    <label for="productPrice">Selling Price N$(per unit):</label>
+                    <input type="number" id="productPrice" min="0" value="4.50" required>
+
+                    <label for="productImage">Product Image (optional):</label>
+                    <input type="file" id="productImage" accept="image/*">
+
+                    <label for="harvestedQty">Harvested/Total Units:</label>
+                    <input type="number" id="harvestedQty" min="1" value="1000" required>
+
+                    <label for="defectedQty">Defected Units:</label>
+                    <input type="number" id="defectedQty" min="0" value="50" required>
+
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
+
+            <div id="farmer-inventory" class="farmer-tab-content" style="display: none;">
+                <h3>Inventory</h3>
+                <div id="inventoryList" class="product-grid">
+                    <p>No products added yet.</p>
+                </div>
+            </div>
+
+            <div id="farmer-quotes" class="farmer-tab-content" style="display: none;">
+                <h3>Pending Quotations</h3>
+                <div id="pendingQuotesList">
+                    <p>No pending quotations.</p>
+                </div>
+
+                <hr>
+
+                <h3>Sales History (Accepted/Rejected Quotes)</h3>
+                <div id="completedQuotesList">
+                    <p>No completed quotations.</p>
+                </div>
+            </div>
+
+            <div id="farmer-reports" class="farmer-tab-content" style="display: none;">
+                <h3>Performance Reports</h3>
+
+                <h4>Transaction Summary (Current Month)</h4>
+                <div class="report-grid">
+                    <div class="report-box">
+                        <h4>Total Sales Count</h4>
+                        <p><strong id="reportTotalTransactions">0</strong> transactions</p>
+                    </div>
+                    <div class="report-box">
+                        <h4>Total Revenue</h4>
+                        <p>$ <strong id="reportTotalRevenue">0.00</strong></p>
+                    </div>
+                    <div class="report-box">
+                        <h4>Most Frequent Buyer</h4>
+                        <p><strong id="reportBiggestClient">N/A</strong></p>
+                    </div>
+                </div>
+
+                <h4>Yearly Performance Overview (Conceptual)</h4>
+                <div class="report-box" style="margin-top: 20px;">
+                    <p>Total Harvested Units: <strong id="reportTotalHarvested">0</strong></p>
+                    <p>Total Defected Units: <strong id="reportTotalDefected">0</strong></p>
+                    <p>Total Sold Units: <strong id="reportTotalSold">0</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Ensure the dashboard state is loaded correctly when this page is opened
+        if (typeof showFarmerTab === 'function') {
+            showFarmerTab('farmer-add');
+            // Re-run the checks for the current user (simulating session check)
+            if (currentUser.role !== 'Farmer') {
+                window.location.href = 'login.html'; // Redirect if not logged in
+            }
+        }
+    </script>
+</body>
+
+</html>

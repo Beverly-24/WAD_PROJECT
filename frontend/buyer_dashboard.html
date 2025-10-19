@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="buyerTitle">Marketplace</h1>
+        <button onclick="logout()" style="float: right;" id="logoutBtn">Logout</button>
+        
+        <div id="buyer-dashboard" class="dashboard-section">
+            
+            <div class="tabs">
+                <div class="tab-button active" onclick="showBuyerTab('buyer-browse')">Browse Produce</div>
+                <div class="tab-button" onclick="showBuyerTab('buyer-cart')">Cart Summary (<span id="cartCount">0</span>)</div>
+                <div class="tab-button" onclick="showBuyerTab('buyer-quotes')">My Quotes (<span id="myQuotesCount">0</span>)</div>
+            </div>
+
+            <div id="buyer-browse" class="buyer-tab-content">
+                <h3>Available Products</h3>
+                <div id="marketplaceList" class="product-grid">
+                    <p>No products available yet.</p>
+                </div>
+            </div>
+
+            <div id="buyer-cart" class="buyer-tab-content" style="display: none;">
+                <h3>Your Cart</h3> 
+                <div id="cartSummaryList">
+                    <p>Your cart is empty.</p>
+                </div>
+                <hr>
+                <p>Total Quote Amount: N$<strong id="cartTotal">0.00</strong></p>
+                <button onclick="submitQuotation()">Submit Quotation to Farmers</button>
+            </div>
+
+            <div id="buyer-quotes" class="buyer-tab-content" style="display: none;">
+                <h3>My Submitted Quotes</h3>
+                <div id="submittedQuotesList">
+                    <p>You have not submitted any quotes.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Ensure the dashboard state is loaded correctly when this page is opened
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof currentUser !== 'undefined' && currentUser.role !== 'Buyer') {
+                window.location.href = 'login.html'; // Redirect if not logged in as Buyer
+            } else if (typeof showBuyerTab === 'function') {
+                // Initialize the correct tab view on load
+                showBuyerTab('buyer-browse');
+            }
+        });
+    </script>
+</body>
+</html>

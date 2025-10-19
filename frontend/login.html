@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Tracker - Login</title>
+   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Farm Tracker & Marketplace</h1>
+        <div id="login-screen">
+            <h2>User Login</h2>
+            <div style="max-width: 400px; margin: auto;">
+                <h3>Farmer Login</h3>
+                <p>Use: farmer_john / pass123</p>
+                <input type="text" id="farmerUsername" placeholder="Username (farmer_john)" value="farmer_john">
+                <input type="password" id="farmerPassword" placeholder="Password (pass123)" value="pass123">
+                <button onclick="login('Farmer')">Login as Farmer</button>
+                
+                <hr>
+                
+                <h3>Buyer Login/Register</h3>
+                <input type="text" id="buyerUsername" placeholder="Buyer Username (e.g., buyer_sam)">
+                <input type="password" id="buyerPassword" placeholder="Password">
+                <button onclick="login('Buyer')">Login as Buyer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
